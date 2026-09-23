@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="flex items-center gap-3 text-xs text-slate-400">
-        <span id="slideLabel">1 / 8</span>
+        <span id="slideLabel">1 / 9</span>
         <span class="hidden sm:inline">Use <span class="kbd">←</span> <span class="kbd">→</span> or click</span>
       </div>
     </header>
@@ -127,8 +127,55 @@
         </div>
       </section>
 
-      <!-- 4. POC design -->
-      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="3">
+
+      <!-- 4. Find Rates Faster — the plan -->
+      <section class="slide absolute inset-0 px-6 md:px-12 py-8 flex-col justify-center overflow-y-auto" data-i="3">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-2">Find Rates Faster · Doc plan</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-2">Find Rates Faster — the plan</h2>
+        <p class="text-base md:text-lg text-slate-300 mb-5 max-w-5xl">
+          Tonight’s POC is <span class="text-white font-semibold">inside</span> this plan — not a separate strategy. Cold reply ~7%, black-box enquiries, Cogoport/trust fear → agents don’t quote. We raise reply, rate-fill, and precision while product builds.
+        </p>
+        <div class="grid lg:grid-cols-12 gap-3 max-w-6xl w-full">
+          <!-- Lifecycle -->
+          <div class="lg:col-span-12 card rounded-2xl p-4">
+            <div class="text-xs text-slate-400 mb-3 font-semibold tracking-wide uppercase">Lead lifecycle</div>
+            <div class="grid md:grid-cols-3 gap-3">
+              <div class="rounded-xl bg-ink-800/60 border border-slate-700/60 p-3">
+                <div class="text-accent-soft font-bold text-sm mb-1">Cold</div>
+                <p class="text-sm text-slate-300">Enrich + explainer + demo + CTA · spam controls · lift reply above ~7%</p>
+              </div>
+              <div class="rounded-xl bg-ink-800/60 border border-slate-700/60 p-3">
+                <div class="text-mint font-bold text-sm mb-1">Warm</div>
+                <p class="text-sm text-slate-300">Human onboarding · agent-side enquiry demo · bot provenance / dedupe</p>
+              </div>
+              <div class="rounded-xl bg-ink-800/60 border border-slate-700/60 p-3">
+                <div class="text-warn font-bold text-sm mb-1">Verified</div>
+                <p class="text-sm text-slate-300">Engaged + replied (priority) — <span class="text-white">not</span> KYC/KYB</p>
+              </div>
+            </div>
+          </div>
+          <!-- Matching -->
+          <div class="lg:col-span-4 card rounded-2xl p-4">
+            <div class="text-xs text-slate-400 mb-2 font-semibold tracking-wide uppercase">Matching</div>
+            <p class="text-sm text-slate-200 leading-relaxed">Corridor/cargo <strong class="text-white">score</strong> → <strong class="text-white">filter</strong> low scores → <strong class="text-white">shortlist</strong> → email. Stop broadcast-all.</p>
+          </div>
+          <!-- Trust -->
+          <div class="lg:col-span-4 card rounded-2xl p-4">
+            <div class="text-xs text-slate-400 mb-2 font-semibold tracking-wide uppercase">Trust · anti-disintermediation</div>
+            <p class="text-sm text-slate-200 leading-relaxed">Human touch; answer “will I get the booking?”; no bot re-ask after same-day direct quote.</p>
+          </div>
+          <!-- Pricing + Point 7 highlight -->
+          <div class="lg:col-span-4 card rounded-2xl p-4 border border-accent/40 bg-accent/5">
+            <div class="text-xs text-accent-soft mb-2 font-semibold tracking-wide uppercase">Tonight’s POC plugs here</div>
+            <p class="text-sm text-slate-100 leading-relaxed mb-2"><strong>Indicative / benchmark pricing</strong> so agents know whether to pursue — avoid endless negotiation without a booking guarantee.</p>
+            <p class="text-sm text-slate-100 leading-relaxed"><strong>Point 7 · First enquiry</strong>: dedicated human + <strong class="text-mint">&lt;24h</strong> follow-up if no reply (target 100% coverage).</p>
+          </div>
+        </div>
+        <p class="mt-4 text-sm text-slate-400 max-w-5xl">Parallel process experiment feeds this Doc plan while aggregation/APIs mature — same goals, faster learning loop.</p>
+      </section>
+
+      <!-- 5. POC design -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="4">
         <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">POC design</p>
         <h2 class="text-3xl md:text-5xl font-bold mb-8">Hypothesis, metrics, duration, sample</h2>
         <div class="grid md:grid-cols-2 gap-5 max-w-6xl">
@@ -157,8 +204,8 @@
         </div>
       </section>
 
-      <!-- 5. Process sketch -->
-      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="4">
+      <!-- 6. Process sketch -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="5">
         <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Process sketch</p>
         <h2 class="text-3xl md:text-5xl font-bold mb-4">Enquiry → lean rate gather → reply SLA</h2>
         <p class="text-slate-400 mb-6 text-sm">Click a step to expand · or use number keys 1–4</p>
@@ -189,8 +236,8 @@
         </div>
       </section>
 
-      <!-- 6. Needs from Sergey -->
-      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="5">
+      <!-- 7. Needs from Sergey -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="6">
         <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Ask</p>
         <h2 class="text-3xl md:text-5xl font-bold mb-8">What we need from Sergey’s side</h2>
         <div class="grid md:grid-cols-3 gap-5 max-w-6xl">
@@ -209,8 +256,8 @@
         </div>
       </section>
 
-      <!-- 7. Next 2 weeks -->
-      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="6">
+      <!-- 8. Next 2 weeks -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="7">
         <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Plan</p>
         <h2 class="text-3xl md:text-5xl font-bold mb-8">Next 2 weeks</h2>
         <ol class="max-w-4xl space-y-4">
@@ -233,8 +280,8 @@
         </ol>
       </section>
 
-      <!-- 8. Open questions -->
-      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="7">
+      <!-- 9. Open questions -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="8">
         <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Discussion</p>
         <h2 class="text-3xl md:text-5xl font-bold mb-8">Open questions for Sergey</h2>
         <ul class="max-w-4xl space-y-4 text-xl md:text-2xl text-slate-200">
@@ -296,7 +343,7 @@
       if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
       if (e.key === 'Home') go(0);
       if (e.key === 'End') go(slides.length - 1);
-      if (['1','2','3','4'].includes(e.key) && i === 4) selectStep(+e.key - 1);
+      if (['1','2','3','4'].includes(e.key) && i === 5) selectStep(+e.key - 1);
     });
 
     // Tabs on slide 3
