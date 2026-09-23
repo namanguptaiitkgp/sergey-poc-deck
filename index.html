@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logicore — Indicative Rates POC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { 950: '#0b1220', 900: '#111827', 800: '#1a2332', 700: '#243044' },
+            accent: { DEFAULT: '#3b82f6', soft: '#60a5fa', muted: '#93c5fd' },
+            mint: '#34d399',
+            warn: '#fbbf24'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    html, body { height: 100%; overflow: hidden; }
+    .slide { display: none; animation: fade .28s ease; }
+    .slide.active { display: flex; }
+    @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .dot { width: 8px; height: 8px; border-radius: 999px; background: #334155; transition: .2s; }
+    .dot.on { width: 22px; background: #3b82f6; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(148,163,184,.18); }
+    .pill { border: 1px solid rgba(59,130,246,.35); background: rgba(59,130,246,.12); }
+    .kbd { font-size: 11px; padding: 2px 6px; border-radius: 4px; border: 1px solid #475569; background: #1e293b; color: #cbd5e1; }
+    button:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }
+    .tab-btn.on { background: #3b82f6; color: white; }
+    .step-item { opacity: .45; transition: .2s; }
+    .step-item.on { opacity: 1; border-color: rgba(59,130,246,.5); background: rgba(59,130,246,.08); }
+  </style>
+</head>
+<body class="bg-ink-950 text-slate-100 font-sans antialiased">
+  <div class="h-full flex flex-col">
+    <!-- Top bar -->
+    <header class="flex items-center justify-between px-6 py-3 border-b border-slate-800/80 bg-ink-900/80 backdrop-blur">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-bold text-sm">L</div>
+        <div>
+          <div class="text-sm font-semibold tracking-wide">Logicore</div>
+          <div class="text-[11px] text-slate-400">Indicative Rates POC · Meeting with Sergey</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-xs text-slate-400">
+        <span id="slideLabel">1 / 8</span>
+        <span class="hidden sm:inline">Use <span class="kbd">←</span> <span class="kbd">→</span> or click</span>
+      </div>
+    </header>
+
+    <!-- Slides -->
+    <main class="flex-1 relative overflow-hidden">
+
+      <!-- 1. Why we're here -->
+      <section class="slide active absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="0">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-4">Agenda · Sergey · Lena · Alena optional</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight max-w-4xl mb-6">
+          Prove value on indicative rates <span class="text-accent-soft">before</span> the full product ships
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed mb-10">
+          Product path is real and takes time. A short parallel POC with freshly onboarded agents can stress-test demand, SLA, and process — tonight we pressure-test the idea.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-accent-muted">Strategic, not status apology</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-accent-muted">Parallel to product</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-accent-muted">Decision-oriented</span>
+        </div>
+      </section>
+
+      <!-- 2. Problem -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="1">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Problem</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-8">Agents need indicative prices — trust decays with every silent hour</h2>
+        <div class="grid md:grid-cols-3 gap-5 max-w-6xl">
+          <div class="card rounded-2xl p-6">
+            <div class="text-mint text-sm font-semibold mb-2">Enquiry in</div>
+            <p class="text-lg text-slate-200">Agent gets a freight enquiry and needs a credible ballpark to stay in the conversation.</p>
+          </div>
+          <div class="card rounded-2xl p-6">
+            <div class="text-warn text-sm font-semibold mb-2">Delay risk</div>
+            <p class="text-lg text-slate-200">Full aggregation / scraping / carrier APIs hit WAF, KYB, and vendor walls. Contractors stall. Time-to-rate slips.</p>
+          </div>
+          <div class="card rounded-2xl p-6">
+            <div class="text-accent-soft text-sm font-semibold mb-2">Trust gap</div>
+            <p class="text-lg text-slate-200">Without a fast indicative reply, agents lose confidence — and we lose the chance to learn what “good enough” looks like.</p>
+          </div>
+        </div>
+        <p class="mt-8 text-slate-400 text-base max-w-4xl">Related momentum already exists: Elena / OPS / marketing on agent outreach, scripts, corridor-targeted rate requests; Point 7 interest in a first-enquiry human SLA.</p>
+      </section>
+
+      <!-- 3. Product vs POC -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="2">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Two tracks</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-3">Product path vs POC path</h2>
+        <p class="text-xl text-slate-300 mb-8">Parallel — not instead. POC proves early value while product builds durable capability.</p>
+        <div class="flex gap-2 mb-6" id="pathTabs" role="tablist">
+          <button type="button" class="tab-btn on px-4 py-2 rounded-lg text-sm font-semibold bg-ink-800" data-tab="product">Product path</button>
+          <button type="button" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold bg-ink-800" data-tab="poc">POC path</button>
+        </div>
+        <div id="tab-product" class="tab-panel card rounded-2xl p-8 max-w-4xl">
+          <h3 class="text-2xl font-bold mb-4">Full product (durable)</h3>
+          <ul class="space-y-3 text-lg text-slate-200">
+            <li>• Rate aggregation, scraping, carrier APIs where viable</li>
+            <li>• Coverage, freshness, compliance, scale</li>
+            <li>• Longer timeline — WAF / KYB / contractor friction is real</li>
+            <li>• Outcome: systematic indicative (and later bookable) rates</li>
+          </ul>
+        </div>
+        <div id="tab-poc" class="tab-panel hidden card rounded-2xl p-8 max-w-4xl">
+          <h3 class="text-2xl font-bold mb-4">Lean POC (fast learning)</h3>
+          <ul class="space-y-3 text-lg text-slate-200">
+            <li>• Freshly onboarded agents + clear experiment setup</li>
+            <li>• Human / lean process to gather indicative rates by corridor</li>
+            <li>• Tight reply SLA on first enquiries (Point 7 angle)</li>
+            <li>• Outcome: validate demand, SLA, and process before product maturity</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4. POC design -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="3">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">POC design</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-8">Hypothesis, metrics, duration, sample</h2>
+        <div class="grid md:grid-cols-2 gap-5 max-w-6xl">
+          <div class="card rounded-2xl p-6 md:col-span-2">
+            <div class="text-sm text-slate-400 mb-2">Hypothesis</div>
+            <p class="text-xl md:text-2xl font-medium leading-snug">If we reply to freight enquiries with a credible indicative rate within a defined SLA using a lean process, onboarded agents will engage more (and we learn corridor / SLA requirements for the product).</p>
+          </div>
+          <div class="card rounded-2xl p-6">
+            <div class="text-sm text-slate-400 mb-2">Success metrics (draft)</div>
+            <ul class="text-lg space-y-2 text-slate-200">
+              <li>• % enquiries with indicative reply within SLA</li>
+              <li>• Median time-to-rate</li>
+              <li>• Agent response / continuation rate</li>
+              <li>• Qualitative: “useful enough to quote forward”</li>
+            </ul>
+          </div>
+          <div class="card rounded-2xl p-6">
+            <div class="text-sm text-slate-400 mb-2">Duration & sample</div>
+            <ul class="text-lg space-y-2 text-slate-200">
+              <li>• <strong class="text-white">2 weeks</strong> active experiment window</li>
+              <li>• <strong class="text-white">8–15</strong> freshly onboarded agents (discuss)</li>
+              <li>• Focus corridors: pick 1–2 where outreach already warm</li>
+              <li>• Cap daily volume so SLA is honest</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Process sketch -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="4">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Process sketch</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">Enquiry → lean rate gather → reply SLA</h2>
+        <p class="text-slate-400 mb-6 text-sm">Click a step to expand · or use number keys 1–4</p>
+        <div class="grid md:grid-cols-4 gap-4 max-w-6xl" id="steps">
+          <button type="button" class="step-item on card rounded-2xl p-5 text-left" data-step="0">
+            <div class="text-accent-soft font-bold text-sm mb-2">01</div>
+            <div class="font-semibold text-lg mb-1">Enquiry in</div>
+            <p class="text-sm text-slate-400">Agent / intake logs corridor, cargo basics, timing.</p>
+          </button>
+          <button type="button" class="step-item card rounded-2xl p-5 text-left" data-step="1">
+            <div class="text-accent-soft font-bold text-sm mb-2">02</div>
+            <div class="font-semibold text-lg mb-1">Lean gather</div>
+            <p class="text-sm text-slate-400">Targeted rate requests + existing scripts / OPS playbook.</p>
+          </button>
+          <button type="button" class="step-item card rounded-2xl p-5 text-left" data-step="2">
+            <div class="text-accent-soft font-bold text-sm mb-2">03</div>
+            <div class="font-semibold text-lg mb-1">Indicative reply</div>
+            <p class="text-sm text-slate-400">Ballpark + assumptions + validity window — not a firm offer.</p>
+          </button>
+          <button type="button" class="step-item card rounded-2xl p-5 text-left" data-step="3">
+            <div class="text-accent-soft font-bold text-sm mb-2">04</div>
+            <div class="font-semibold text-lg mb-1">Learn & log</div>
+            <p class="text-sm text-slate-400">SLA hit/miss, agent feedback → feed product backlog.</p>
+          </button>
+        </div>
+        <div id="stepDetail" class="card rounded-2xl p-6 mt-6 max-w-6xl text-lg text-slate-200">
+          Agent submits or forwards enquiry. We tag corridor and clock the SLA. No waiting on full product coverage.
+        </div>
+      </section>
+
+      <!-- 6. Needs from Sergey -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="5">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Ask</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-8">What we need from Sergey’s side</h2>
+        <div class="grid md:grid-cols-3 gap-5 max-w-6xl">
+          <div class="card rounded-2xl p-6 border-l-4 border-accent">
+            <h3 class="text-xl font-bold mb-3">Agents</h3>
+            <p class="text-lg text-slate-300">Access to / approval for a small cohort of freshly onboarded agents for the 2-week window.</p>
+          </div>
+          <div class="card rounded-2xl p-6 border-l-4 border-mint">
+            <h3 class="text-xl font-bold mb-3">Owners</h3>
+            <p class="text-lg text-slate-300">Named owners on OPS / commercial for rate gather and SLA accountability (Lena in the loop).</p>
+          </div>
+          <div class="card rounded-2xl p-6 border-l-4 border-warn">
+            <h3 class="text-xl font-bold mb-3">Decision</h3>
+            <p class="text-lg text-slate-300">Green-light the POC framing today: parallel track, success metrics, and corridor focus — or reshape live.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Next 2 weeks -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="6">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Plan</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-8">Next 2 weeks</h2>
+        <ol class="max-w-4xl space-y-4">
+          <li class="card rounded-xl px-6 py-4 flex gap-4 items-start">
+            <span class="text-accent font-bold shrink-0">W0</span>
+            <span class="text-lg">Lock cohort, corridors, SLA number, reply template, logging sheet.</span>
+          </li>
+          <li class="card rounded-xl px-6 py-4 flex gap-4 items-start">
+            <span class="text-accent font-bold shrink-0">D1–3</span>
+            <span class="text-lg">Brief agents + OPS; align with Elena / marketing scripts already in motion.</span>
+          </li>
+          <li class="card rounded-xl px-6 py-4 flex gap-4 items-start">
+            <span class="text-accent font-bold shrink-0">D4–10</span>
+            <span class="text-lg">Run lean rate gather on live first enquiries; daily SLA dashboard (lightweight).</span>
+          </li>
+          <li class="card rounded-xl px-6 py-4 flex gap-4 items-start">
+            <span class="text-accent font-bold shrink-0">D11–14</span>
+            <span class="text-lg">Readout: metrics, agent quotes, product backlog inputs; go / iterate / stop.</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- 8. Open questions -->
+      <section class="slide absolute inset-0 px-8 md:px-16 py-10 flex-col justify-center" data-i="7">
+        <p class="text-accent-soft text-sm font-semibold tracking-widest uppercase mb-3">Discussion</p>
+        <h2 class="text-3xl md:text-5xl font-bold mb-8">Open questions for Sergey</h2>
+        <ul class="max-w-4xl space-y-4 text-xl md:text-2xl text-slate-200">
+          <li class="card rounded-xl px-6 py-4">Is a 2-week, 8–15 agent window the right scale — or smaller and sharper?</li>
+          <li class="card rounded-xl px-6 py-4">Which corridors should we prioritize given current outreach heat?</li>
+          <li class="card rounded-xl px-6 py-4">What SLA is ambitious but honest for a lean (non-product) reply?</li>
+          <li class="card rounded-xl px-6 py-4">Who owns the rate-gather queue day-to-day — and who escalates misses?</li>
+          <li class="card rounded-xl px-6 py-4">What would make this a clear <span class="text-mint font-semibold">yes</span> vs. reshape vs. pause?</li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer nav -->
+    <footer class="px-6 py-4 border-t border-slate-800/80 bg-ink-900/80 flex items-center justify-between gap-4">
+      <button type="button" id="prev" class="px-4 py-2 rounded-lg bg-ink-800 hover:bg-ink-700 text-sm font-semibold disabled:opacity-30">← Prev</button>
+      <div class="flex items-center gap-2" id="dots" aria-label="Progress"></div>
+      <button type="button" id="next" class="px-4 py-2 rounded-lg bg-accent hover:bg-blue-500 text-sm font-semibold">Next →</button>
+    </footer>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const dotsEl = document.getElementById('dots');
+    const label = document.getElementById('slideLabel');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let i = 0;
+
+    const stepCopy = [
+      'Agent submits or forwards enquiry. We tag corridor and clock the SLA. No waiting on full product coverage.',
+      'OPS / lean gather uses targeted rate requests and existing scripts by corridor — same muscle Elena’s track is building, focused for the experiment.',
+      'Reply with indicative range, key assumptions, and validity window. Explicitly not a firm booking offer. Hit the agreed SLA.',
+      'Log hit/miss, time-to-rate, and agent feedback. Feed product backlog (coverage gaps, corridor priority, API vs human mix).'
+    ];
+
+    slides.forEach((_, idx) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'dot' + (idx === 0 ? ' on' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+      d.addEventListener('click', () => go(idx));
+      dotsEl.appendChild(d);
+    });
+
+    function go(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      [...dotsEl.children].forEach((d, idx) => d.classList.toggle('on', idx === i));
+      label.textContent = (i + 1) + ' / ' + slides.length;
+      prevBtn.disabled = i === 0;
+      nextBtn.textContent = i === slides.length - 1 ? 'Done' : 'Next →';
+    }
+
+    prevBtn.addEventListener('click', () => go(i - 1));
+    nextBtn.addEventListener('click', () => go(i + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(i + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+      if (e.key === 'Home') go(0);
+      if (e.key === 'End') go(slides.length - 1);
+      if (['1','2','3','4'].includes(e.key) && i === 4) selectStep(+e.key - 1);
+    });
+
+    // Tabs on slide 3
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        const id = btn.dataset.tab;
+        document.getElementById('tab-product').classList.toggle('hidden', id !== 'product');
+        document.getElementById('tab-poc').classList.toggle('hidden', id !== 'poc');
+      });
+    });
+
+    function selectStep(n) {
+      document.querySelectorAll('.step-item').forEach((el, idx) => el.classList.toggle('on', idx === n));
+      document.getElementById('stepDetail').textContent = stepCopy[n];
+    }
+    document.querySelectorAll('.step-item').forEach(el => {
+      el.addEventListener('click', () => selectStep(+el.dataset.step));
+    });
+
+    go(0);
+  </script>
+</body>
+</html>
